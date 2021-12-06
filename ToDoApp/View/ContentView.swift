@@ -15,9 +15,9 @@ struct ContentView: View {
         NavigationView{
             VStack {
                 List{
-                    ForEach(self.taskVM.allTasks){
+                    ForEach(self.taskVM.getAllTasks()){
                         task in
-                        NavigationLink(destination: TaskDetails(taskVM: taskVM, editMode: false,title: task.title, color: task.color, description: task.description)){
+                        NavigationLink  (destination: TaskDetails(taskVM: taskVM, editMode: false,title: task.title, color: task.color, description: task.description)){
                             
                             TaskCell(task: task).frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/9,alignment: .leading)
                         }

@@ -15,6 +15,7 @@ struct TaskDetails: View {
     @State var title = "TEST"
     @State var color = Color.black
     @State var description = "DESCRIPTION"
+    @State var alertMessage = ""
     
     var body: some View {
         VStack{
@@ -50,13 +51,21 @@ struct TaskDetails: View {
                 Button {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd/MM/YYYY"
-                    self.taskVM.addTask(task: Task(title: self.title, color: color, completed: false,description: self.description,createdDate: dateFormatter.string(from: Date.init())))
+                    self.taskVM.addTaskToCollection(task: Task(title: self.title, color: color, completed: false,description: self.description,createdDate: dateFormatter.string(from: Date.init()))) { message in
+                        if message == "Successfull"{
+                            self.alertMessage = message
+                            showsAlert = true
+                        }
+                    }
+                    
+                    
     
                 } label: {
                     Text("Create Task")
     
-                }.padding().alert(isPresented: $showsAlert) {
-                    Alert(title: Text("Successfull"), message: Text("Succesfully Added"), dismissButton: .cancel())
+                }.padding()
+                .alert(isPresented: $showsAlert) {
+                    Alert(title: Text(self.alertMessage))
                 }
                 
             }

@@ -16,7 +16,7 @@ struct TaskCell: View {
             .foregroundColor(Color.white)
             .font(.headline)
             HStack{
-                Text(task.createdDate).font(.subheadline)
+                Text(task.createdDate).font(.subheadline).colorInvert()
                 Text(task.description).font(.footnote).foregroundColor(Color.white)
             }
             

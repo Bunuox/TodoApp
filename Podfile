@@ -6,6 +6,7 @@ target 'ToDoApp' do
   use_frameworks!
 
 pod 'Firebase/Auth'
+pod 'Firebase/Firestore' 
 
   # Pods for ToDoApp
 
