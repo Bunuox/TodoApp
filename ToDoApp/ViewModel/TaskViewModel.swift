@@ -72,7 +72,7 @@ class TaskViewModel: ObservableObject {
             "createdDate": task.createdDate
         ] as [String: Any]
         
-        firestoreReference = firestoreDatabase.collection("Tasks").addDocument(data: documentData, completion: { err in
+        firestoreDatabase.collection("Tasks").document(task.id).setData(documentData) { err in
             if err == nil{
                 completion("Successfull")
                 self.allTasks.append(task)
@@ -80,6 +80,10 @@ class TaskViewModel: ObservableObject {
                 completion("Error")
             }
         }
-        )
+        
+    }
+    
+    func updateTask(task: Task){
+        firestoreDatabase.collection("Tasks").document(task.id).setData(["completed": task.completed], merge: true)
     }
 }
