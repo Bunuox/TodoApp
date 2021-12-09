@@ -23,7 +23,7 @@ struct ContentView: View {
                         }.buttonStyle(PlainButtonStyle()) //Navlink içinde kullanılacak her buton için bunu ekle.
                         .listRowBackground(task.color)
                         
-                    }
+                    }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/8)
                 }
                 
                 NavigationLink(destination: TaskDetails(taskVM: self.taskVM,editMode: true)){

@@ -30,11 +30,18 @@ struct TaskCell: View {
                 .foregroundColor(Color.white)
                 .font(.headline)
                 HStack{
-                    Text(task.createdDate).font(.subheadline).colorInvert()
-                    Text(task.description).font(.footnote).foregroundColor(Color.white)
-                }
+                    Text(task.createdDate)
+                        .font(.subheadline)
+                        .colorInvert()
+                    
+                    Text(task.description)
+                        .font(.footnote)
+                        .foregroundColor(Color.white)
+                        //.fixedSize()
+                        //.frame(width: 5, height: 5,alignment: .leading)
+                }.frame(width: 170, height: 30, alignment: .leading)
                 
-            }
-        }
+            }.frame(width: 150, height: 50, alignment: .leading)
+        }.fixedSize()
     }
 }
